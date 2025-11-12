@@ -1,6 +1,6 @@
 Thanks for downloading this template!
 
-Template Name: Restaurantly
-Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
+Template Name: RicoMar
+Template URL: https://bootstrapmade.com/RicoMar-restaurant-template/
 Author: BootstrapMade.com
 License: https://bootstrapmade.com/license/
