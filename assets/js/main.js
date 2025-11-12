@@ -1,10 +1,20 @@
 /**
-* Template Name: Restaurantly
-* Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
+* Template Name: RicoMar
+* Template URL: https://bootstrapmade.com/RicoMar-restaurant-template/
 * Updated: Aug 07 2024 with Bootstrap v5.3.3
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+// Initialize Lenis
+const lenis = new Lenis({
+  autoRaf: true,
+});
+
+// Listen for the scroll event and log the event data
+lenis.on('scroll', (e) => {
+  console.log(e);
+});
 
 (function() {
   "use strict";
