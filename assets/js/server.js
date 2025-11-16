@@ -255,7 +255,6 @@ async function handleSlotFilling(req, res, session, message, reservationData) {
       
       botResponse = `¡Perfecto! Tu reserva está confirmada\n\n` +
         `Detalles de tu reserva:\n` +
-        `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
         `Nombre: ${session.reservationData.NombreCliente}\n` +
         `Contacto: ${session.reservationData.NúmeroContacto}\n` +
         `Plato: ${session.reservationData.PlatoSeleccionado}\n` +
@@ -263,7 +262,6 @@ async function handleSlotFilling(req, res, session, message, reservationData) {
         `Fecha: ${session.reservationData.Fecha}\n` +
         `Hora: ${session.reservationData.Hora}\n` +
         `ID Reserva: ${reservationId}\n` +
-        `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
         `¡Te esperamos en RicoMar!`;
       
       session.slotFillingActive = false;
@@ -273,27 +271,41 @@ async function handleSlotFilling(req, res, session, message, reservationData) {
       if (session.reservationData.NúmeroContacto) {
         try {
           // Mensaje personalizado para WhatsApp
-          const whatsappMessage = `*CONFIRMACIÓN DE RESERVA - RICOMAR*\n\n` +
-            `Hola ${session.reservationData.NombreCliente},\n\n` +
-            `¡Tu reserva ha sido confirmada exitosamente!\n\n` +
-            `*Detalles de tu reserva:*\n` +
-            `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-            `Nombre: ${session.reservationData.NombreCliente}\n` +
-            `Personas: ${session.reservationData.CantidadPersonas}\n` +
-            `Fecha: ${session.reservationData.Fecha}\n` +
-            `Hora: ${session.reservationData.Hora}\n` +
-            `Plato preseleccionado: ${session.reservationData.PlatoSeleccionado}\n` +
-            `ID de Reserva: *${reservationId}*\n` +
-            `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-            `*Ubicación:*\n` +
-            `Parque 47 - 10, Talara Baja, Perú\n\n` +
-            `*Contacto:*\n` +
-            `Teléfono: +51 900 111 222\n` +
-            `Email: ricomar@gmail.com\n\n` +
-            `*Horario de atención:*\n` +
-            `Lunes a Sábado: 10:00 AM - 11:00 PM\n\n` +
-            `¡Te esperamos en RicoMar!\n\n` +
-            `_Si necesitas modificar o cancelar tu reserva, contáctanos con tu ID de reserva._`;
+          const whatsappMessage = 
+`🌟✨ *RESERVA CONFIRMADA - RICOMAR* ✨🌟
+
+Hola ${session.reservationData.NombreCliente} 😄👋,
+
+¡Estamos felices de tenerte con nosotros!  
+Tu reserva ha sido *confirmada con éxito* y ya estamos preparando una gran experiencia para ti. 🐟💙🍽️
+
+*📌 Detalles de tu reserva:*
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 *Nombre:* ${session.reservationData.NombreCliente}
+👥 *Personas:* ${session.reservationData.CantidadPersonas}
+📅 *Fecha:* ${session.reservationData.Fecha}
+⏰ *Hora:* ${session.reservationData.Hora}
+🍽️ *Plato preseleccionado:* ${session.reservationData.PlatoSeleccionado}
+🆔 *ID de Reserva:* *${reservationId}*
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 *Ubicación:*  
+📌 Parque 47 - 10, Talara Baja, Perú
+
+📞 *Contacto:*  
+📱 +51 900 111 222  
+✉️ ricomar@gmail.com
+
+🕒 *Horario:*  
+🗓️ Lunes a Sábado  
+⏱️ 10:00 AM - 11:00 PM
+
+🌊🐠 *¡Te esperamos en RicoMar para una experiencia deliciosa!*  
+Gracias por reservar con nosotros 💛✨
+
+_Si deseas modificar o cancelar tu reserva, solo indícanos tu ID._  
+`;
+
 
           const whatsappResult = await sendWhatsAppMessage(
             session.reservationData.NúmeroContacto,
