@@ -173,6 +173,13 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// Endpoint para compatibilidad con /chatbot (frontend legado)
+app.post('/chatbot', (req, res, next) => {
+  // Redirige internamente hacia /api/chat, re-llamando el mismo handler
+  req.url = '/api/chat';
+  next();
+}, app._router.stack.find(r => r.route && r.route.path === '/api/chat').route.stack[0].handle);
+
 // Función para manejar Slot Filling
 async function handleSlotFilling(req, res, session, message, reservationData) {
   try {
