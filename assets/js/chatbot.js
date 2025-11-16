@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       // Enviar mensaje al backend
-      const response = await fetch('http://localhost:4000/api/chat', {
+      const response = await fetch('/chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
